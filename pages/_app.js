@@ -1,14 +1,14 @@
-import GlobalStyle from "@/styles";
-import Head from "next/head";
 
-export default function App({ Component, pageProps }) {
+
+import { SWRConfig } from "swr";
+import Article from "@/components/Article.js/Article";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function App() {
   return (
-    <>
-      <GlobalStyle />
-      <Head>
-        <title>Capstone Project</title>
-      </Head>
-      <Component {...pageProps} />
-    </>
+    <SWRConfig value={{ fetcher }}>
+      <Article />
+    </SWRConfig>
   );
 }
