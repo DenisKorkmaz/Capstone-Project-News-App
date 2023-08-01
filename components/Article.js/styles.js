@@ -19,7 +19,10 @@ height: 91px;
   border-radius: 20px;
 `;
 
-export const StyledButton = styled.button`
+export const StyledLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 127px;
   height: 33px;
   border-radius: 40px;
@@ -27,4 +30,5 @@ export const StyledButton = styled.button`
   background: rgba(0, 128, 255, 0.9);
   color: white;
   cursor: pointer;
+  text-decoration: none;
 `;
