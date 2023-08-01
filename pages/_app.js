@@ -1,14 +1,12 @@
-import GlobalStyle from "@/styles";
-import Head from "next/head";
 
-export default function App({ Component, pageProps }) {
+import Article from "@/components/Article.js/Article";
+export default function App() {
   return (
     <>
-      <GlobalStyle />
-      <Head>
-        <title>Capstone Project</title>
-      </Head>
-      <Component {...pageProps} />
+ 
+      <Article>
+      </Article>
+  
     </>
   );
 }
