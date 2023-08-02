@@ -1,6 +1,15 @@
 import React from "react";
 import useSWR from "swr";
-import { StyledH1, StyledImage, StyledLink, StyledContainer } from "./styles";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import {
+  StyledH1,
+  StyledImage,
+  ButtonContainer,
+  StyledLink,
+  StyledContainer,
+  ContentContainer,
+  MainContainer,
+} from "./styles";
 
 export default function Article() {
   const { data, error } = useSWR("https://www.tagesschau.de/api2/news");
@@ -14,19 +23,28 @@ export default function Article() {
 
   const stories = data.news.filter(
     (item) =>
-      item.type === 'story' && item.teaserImage?.imageVariants?.['16x9-256']
+      item.type === "story" && item.teaserImage?.imageVariants?.["16x9-256"]
   );
 
   return (
     <div>
       {stories.map(({ title, teaserImage, shareURL }, sophoraId) => (
-    
         <StyledContainer key={sophoraId}>
-          <StyledH1>{title}</StyledH1>
-          <StyledImage src={teaserImage.imageVariants?.['16x9-256']} />
-          <StyledLink href={shareURL} target="_blank" rel="noopener noreferrer">
-          zum Artikel
-        </StyledLink>
+          <MainContainer>
+            <StyledH1>{title}</StyledH1>
+            <ContentContainer>
+            <StyledImage src={teaserImage.imageVariants?.["16x9-256"]} />
+            <ButtonContainer>
+              <FavoriteButton />
+              <StyledLink
+                href={shareURL}
+                target="_blank"
+                rel="noopener noreferrer">
+                zum Artikel
+              </StyledLink>
+            </ButtonContainer>
+            </ContentContainer>
+          </MainContainer>
         </StyledContainer>
       ))}
     </div>
