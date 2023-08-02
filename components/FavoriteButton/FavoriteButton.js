@@ -1,6 +1,5 @@
-// FavoriteButton.js
 import { useState } from 'react';
-import { Icon, ColoredIcon } from './Icons';
+import { MarkIcon, ColoredMarkIcon } from '../Icons/Icons';
 import { StyledMarkButton } from "./styles";
 
 export default function FavoriteButton() {
@@ -11,7 +10,7 @@ export default function FavoriteButton() {
       onClick={() => {
         setFavorite(!favorite);
       }}>
-      {favorite ? <ColoredIcon /> : <Icon />}
+      {favorite ? <ColoredMarkIcon /> : <MarkIcon />}
     </StyledMarkButton>
   );
 }
