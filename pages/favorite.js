@@ -18,7 +18,7 @@ export default function FavoritePage() {
     <div>
       <Navigation />
       <div>
-        {favorites.map(({ title, teaserImage, shareURL }) => (
+        {favorites?.map(({ title, teaserImage, shareURL }) => (
           <StyledContainer key={shareURL}>
             <MainContainer>
               <StyledH1>{title}</StyledH1>
