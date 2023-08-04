@@ -8,6 +8,7 @@ export default function FavoriteButton({ article }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
+    if (!favorites) return;
     const found = favorites.some(
       (favorite) => favorite.shareURL === article.shareURL
     );
