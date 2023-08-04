@@ -16,8 +16,8 @@ export default function FavoriteButton({ article }) {
   }, [favorites, article.shareURL]);
 
   function handleMarkFavorite() {
-    console.log('favorites before spreading:', favorites);
-    let newFavorites = [...favorites];
+    const currentFavorites = favorites || [];
+    let newFavorites = [...currentFavorites];
     {
       if (isFavorite) {
         newFavorites = newFavorites.filter(
