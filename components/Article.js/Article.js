@@ -28,14 +28,14 @@ export default function Article() {
 
   return (
     <div>
-      {stories.map(({ title, teaserImage, shareURL }, sophoraId) => (
-        <StyledContainer key={sophoraId}>
+      {stories.map(({ title, teaserImage, shareURL }) => (
+        <StyledContainer key={shareURL}>
           <MainContainer>
             <StyledH1>{title}</StyledH1>
             <ContentContainer>
             <StyledImage src={teaserImage.imageVariants?.["16x9-256"]} />
             <ButtonContainer>
-              <FavoriteButton />
+            <FavoriteButton article={{ title, teaserImage, shareURL }} /> 
               <StyledLink
                 href={shareURL}
                 target="_blank"
