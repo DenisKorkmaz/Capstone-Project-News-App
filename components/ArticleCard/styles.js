@@ -23,16 +23,17 @@ export const MainContainer = styled.div`
   width: 264px;
 `;
 
-export const StyledH1 = styled.h1`
+export const StyledH2 = styled.h2`
   color: #000;
   font-family: Source Serif Pro;
   font-size: 15px;
   width: 264px; 
 `;
 
-export const StyledImage = styled.img`
-  border-radius: 20px;
-`;
+export const StyledImageContainer = styled.div`
+  border-radius: 30px;
+  overflow: hidden;
+`; 
 
 export const ButtonContainer = styled.div`
   display: flex;
