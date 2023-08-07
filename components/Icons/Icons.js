@@ -42,7 +42,7 @@ export const ColoredMarkIconNav = () => (
 
 export const HomeIconColored = () => (
   <svg
-  width="22"
+  width="32"
   height="20"
   viewBox="0 0 22 20"
     fill="none"
