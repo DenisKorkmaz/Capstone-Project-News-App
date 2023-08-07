@@ -14,11 +14,13 @@ export default function Navigation() {
 
   return (
     <StyledNav>
+      
       <Link href="/">
         {router.pathname === "/" ? <HomeIconColored /> : <HomeIcon />}
       </Link>
-
+     
       <Link href="/favorite">
+     
         {router.pathname === "/favorite" ? <ColoredMarkIconNav /> : <MarkIcon />}
       </Link>
     </StyledNav>

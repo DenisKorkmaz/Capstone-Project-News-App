@@ -11,8 +11,6 @@ export const StyledNav = styled.nav`
   justify-content: center;
   align-items: center;
   a:first-child {
-    margin: 20px; 
-    a:second-child {
-        margin: 20px; 
+    margin: 30px; 
   }
 `;
