@@ -6,13 +6,15 @@ export default function FavoritePage() {
   const [favorites, setFavorites] = useLocalStorageState("favorites", []);
 
   return (
-    <div>
+    <>
       <Navigation />
-      <div>
+      <ul>
         {favorites?.map((article) => (
-          <ArticleCard key={article.shareURL} article={article} />
+          <li key={article.shareURL}>
+            <ArticleCard article={article} />
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </>
   );
 }

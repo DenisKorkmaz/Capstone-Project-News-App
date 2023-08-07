@@ -1,4 +1,5 @@
 import { SWRConfig } from "swr";
+import "./styles.css"
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 

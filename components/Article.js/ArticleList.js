@@ -18,10 +18,12 @@ export default function ArticleList() {
   );
 
   return (
-    <div>
+    <ul>
       {stories.map((article) => (
-        <ArticleCard key={article.shareURL} article={article} />
+        <li key={article.shareURL}>
+        <ArticleCard article={article} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
