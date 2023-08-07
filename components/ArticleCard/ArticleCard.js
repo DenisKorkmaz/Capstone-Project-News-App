@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import {
@@ -19,7 +20,7 @@ export default function ArticleCard({ article }) {
       <ContentContainer>
         <StyledImageContainer>
           <Image
-            src={teaserImage.imageVariants?.["16x9-256"]}
+            src={teaserImage?.imageVariants?.["16x9-256"]}
             alt={title}
             width={256}
             height={144}
@@ -27,9 +28,14 @@ export default function ArticleCard({ article }) {
         </StyledImageContainer>
         <ButtonContainer>
           <FavoriteButton article={article} />
-          <StyledLink href={shareURL} target="_blank" rel="noopener noreferrer">
-            zum Artikel
-          </StyledLink>
+          <Link href={shareURL} passHref>
+            <StyledLink
+              href={shareURL}
+              target="_blank"
+              rel="noopener noreferrer">
+              zum Artikel
+            </StyledLink>
+          </Link>
         </ButtonContainer>
       </ContentContainer>
     </StyledContainer>
