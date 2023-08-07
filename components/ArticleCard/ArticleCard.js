@@ -8,7 +8,6 @@ import {
   StyledLink,
   StyledContainer,
   ContentContainer,
-  MainContainer,
 } from "./styles";
 
 export default function ArticleCard({ article }) {
@@ -16,28 +15,23 @@ export default function ArticleCard({ article }) {
 
   return (
     <StyledContainer key={shareURL}>
-      <MainContainer>
-        <StyledH2>{title}</StyledH2>
-        <ContentContainer>
-          <StyledImageContainer>
+      <StyledH2>{title}</StyledH2>
+      <ContentContainer>
+        <StyledImageContainer>
           <Image
             src={teaserImage.imageVariants?.["16x9-256"]}
             alt={title}
-            width={256} 
-            height={144} 
+            width={256}
+            height={144}
           />
-          </StyledImageContainer>
-          <ButtonContainer>
-            <FavoriteButton article={article} />
-            <StyledLink
-              href={shareURL}
-              target="_blank"
-              rel="noopener noreferrer">
-              zum Artikel
-            </StyledLink>
-          </ButtonContainer>
-        </ContentContainer>
-      </MainContainer>
+        </StyledImageContainer>
+        <ButtonContainer>
+          <FavoriteButton article={article} />
+          <StyledLink href={shareURL} target="_blank" rel="noopener noreferrer">
+            zum Artikel
+          </StyledLink>
+        </ButtonContainer>
+      </ContentContainer>
     </StyledContainer>
   );
 }
