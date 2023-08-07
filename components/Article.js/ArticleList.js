@@ -11,7 +11,7 @@ import {
   MainContainer,
 } from "./styles";
 
-export default function Article() {
+export default function ArticleList() {
   const { data, error } = useSWR("https://www.tagesschau.de/api2/news");
 
   if (error) {
