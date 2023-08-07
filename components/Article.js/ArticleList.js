@@ -1,15 +1,6 @@
 import React from "react";
 import useSWR from "swr";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import {
-  StyledH1,
-  StyledImage,
-  ButtonContainer,
-  StyledLink,
-  StyledContainer,
-  ContentContainer,
-  MainContainer,
-} from "./styles";
+import ArticleCard from "../ArticleCard/ArticleCard";
 
 export default function ArticleList() {
   const { data, error } = useSWR("https://www.tagesschau.de/api2/news");
@@ -28,24 +19,8 @@ export default function ArticleList() {
 
   return (
     <div>
-      {stories.map(({ title, teaserImage, shareURL }) => (
-        <StyledContainer key={shareURL}>
-          <MainContainer>
-            <StyledH1>{title}</StyledH1>
-            <ContentContainer>
-            <StyledImage src={teaserImage.imageVariants?.["16x9-256"]} />
-            <ButtonContainer>
-            <FavoriteButton article={{ title, teaserImage, shareURL }} /> 
-              <StyledLink
-                href={shareURL}
-                target="_blank"
-                rel="noopener noreferrer">
-                zum Artikel
-              </StyledLink>
-            </ButtonContainer>
-            </ContentContainer>
-          </MainContainer>
-        </StyledContainer>
+      {stories.map((article) => (
+        <ArticleCard key={article.shareURL} article={article} />
       ))}
     </div>
   );
