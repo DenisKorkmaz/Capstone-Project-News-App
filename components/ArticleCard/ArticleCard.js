@@ -1,4 +1,5 @@
-import React from "react";
+import useLocalStorageState from "use-local-storage-state";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
@@ -14,6 +15,33 @@ import {
 export default function ArticleCard({ article }) {
   const { title, teaserImage, shareURL } = article;
 
+  const [favorites, setFavorites] = useLocalStorageState("favorites", []);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (!favorites) return;
+    const found = favorites.some(
+      (favorite) => favorite.shareURL === article.shareURL
+    );
+    setIsFavorite(found);
+  }, [favorites, article.shareURL]);
+
+  function handleMarkFavorite() {
+    const currentFavorites = favorites || [];
+    let newFavorites = [...currentFavorites];
+    {
+      if (isFavorite) {
+        newFavorites = newFavorites.filter(
+          (favorite) => favorite.shareURL !== article.shareURL
+        );
+      } else {
+        newFavorites.push(article);
+      }
+      setFavorites(newFavorites);
+      setIsFavorite(!isFavorite);
+    }
+  }
+
   return (
     <StyledContainer key={shareURL}>
       <StyledH2>{title}</StyledH2>
@@ -27,7 +55,10 @@ export default function ArticleCard({ article }) {
           />
         </StyledImageContainer>
         <ButtonContainer>
-          <FavoriteButton article={article} />
+          <FavoriteButton
+            isFavorite={isFavorite}
+            handleMarkFavorite={handleMarkFavorite}
+          />
           <Link href={shareURL} passHref>
             <StyledLink
               href={shareURL}
