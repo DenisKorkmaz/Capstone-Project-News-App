@@ -1,25 +1,29 @@
-import Head from "next/head";
-import styled from "styled-components";
-import { Inter } from "next/font/google";
+import ArticleList from "@/components/ArticleList/ArticleList";
+import Navigation from "@/components/Navigation/Navigation";
+import useSWR from "swr";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+
+
+  const { data, error } = useSWR("https://www.tagesschau.de/api2/news");
+
+  if (error) {
+    return <div>failed to load</div>;
+  }
+  if (!data) {
+    return <div>loading...</div>;
+  }
+
+  const stories = data.news.filter(
+    (item) =>
+      item.type === "story" && item.teaserImage?.imageVariants?.["16x9-256"]
+  );
+
   return (
     <>
-      <Head>
-        <title>Capstone Project</title>
-        <meta name="description" content="Penguin Capstone Project" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className={inter.className}>
-        <Heading>🐧Penguin Capstone Template🐧</Heading>
-      </main>
+      <Navigation />
+      <ArticleList articles={stories}  />
     </>
   );
 }
-
-const Heading = styled.h1`
-  text-align: center;
-`;
