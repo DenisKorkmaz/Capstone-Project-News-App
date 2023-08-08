@@ -2,8 +2,10 @@ import useLocalStorageState from "use-local-storage-state";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import useSWR from "swr";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import {
+  StyledButton,
   StyledH2,
   StyledImageContainer,
   ButtonContainer,
@@ -17,6 +19,7 @@ export default function ArticleCard({ article }) {
 
   const [favorites, setFavorites] = useLocalStorageState("favorites", []);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [showSummary, setShowSummary] = useState(false);
 
   useEffect(() => {
     if (!favorites) return;
@@ -42,6 +45,25 @@ export default function ArticleCard({ article }) {
     }
   }
 
+  function Summary({ shareURL }) {
+    const { data, error } = useSWR(
+      `https://api.smmry.com/&SM_API_KEY=7770A49AF2&SM_URL=${shareURL}&SM_LENGTH=3`
+    );
+    if (error) {
+      return <div>failed to load</div>;
+    }
+    if (!data) {
+      return <div>loading...</div>;
+    }
+
+    return (
+      <div>
+        {data.sm_api_title && <StyledH2>{data.sm_api_title}</StyledH2>}
+        {data.sm_api_content && <p>{data.sm_api_content}</p>}
+      </div>
+    );
+  }
+
   return (
     <StyledContainer key={shareURL}>
       <StyledH2>{title}</StyledH2>
@@ -59,6 +81,10 @@ export default function ArticleCard({ article }) {
             isFavorite={isFavorite}
             handleMarkFavorite={handleMarkFavorite}
           />
+          <StyledButton onClick={() => setShowSummary(!showSummary)}>
+            Summary
+          </StyledButton>
+          {showSummary && <Summary shareURL={shareURL} />}
 
           <Link
             href={shareURL}
