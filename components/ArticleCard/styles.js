@@ -49,6 +49,6 @@ export const StyledLink = styled.a`
   background: rgba(0, 128, 255, 0.9);
   color: white;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none; 
   font-size: 13px;
 `;

@@ -59,13 +59,13 @@ export default function ArticleCard({ article }) {
             isFavorite={isFavorite}
             handleMarkFavorite={handleMarkFavorite}
           />
-          <Link href={shareURL} passHref>
-            <StyledLink
-              href={shareURL}
-              target="_blank"
-              rel="noopener noreferrer">
-              zum Artikel
-            </StyledLink>
+
+          <Link
+            href={shareURL}
+            passHref
+            target="_blank"
+            rel="noopener noreferrer">
+            <StyledLink>Zum Artikel</StyledLink>
           </Link>
         </ButtonContainer>
       </ContentContainer>
