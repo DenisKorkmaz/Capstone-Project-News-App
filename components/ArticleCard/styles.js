@@ -28,6 +28,8 @@ export const StyledImageContainer = styled.div`
   border-radius: 30px;
   overflow: hidden;
   margin-bottom: 15px;
+  width: 256; 
+  height: 144;
 `;
 
 export const ButtonContainer = styled.div`
@@ -56,7 +58,7 @@ export const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 95px;
+  width: 130px;
   height: 30px;
   border-radius: 40px;
   background: rgba(0, 128, 255, 0.9);
