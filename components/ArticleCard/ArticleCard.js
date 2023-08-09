@@ -1,50 +1,15 @@
-import useLocalStorageState from "use-local-storage-state";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import ThreeDotMenu from "../ThreeDotsMenü/ThreeDotMenü";
 import {
-  StyledButton,
   StyledH2,
   StyledImageContainer,
   ButtonContainer,
-  StyledLink,
   StyledContainer,
   ContentContainer,
 } from "./styles";
 
 export default function ArticleCard({ article }) {
-  const router = useRouter();
-
   const { title, teaserImage, shareURL } = article;
-
-  const [favorites, setFavorites] = useLocalStorageState("favorites", []);
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  useEffect(() => {
-    if (!favorites) return;
-    const found = favorites.some(
-      (favorite) => favorite.shareURL === article.shareURL
-    );
-    setIsFavorite(found);
-  }, [favorites, article.shareURL]);
-
-  function handleMarkFavorite() {
-    const currentFavorites = favorites || [];
-    let newFavorites = [...currentFavorites];
-    {
-      if (isFavorite) {
-        newFavorites = newFavorites.filter(
-          (favorite) => favorite.shareURL !== article.shareURL
-        );
-      } else {
-        newFavorites.push(article);
-      }
-      setFavorites(newFavorites);
-      setIsFavorite(!isFavorite);
-    }
-  }
 
   return (
     <StyledContainer key={shareURL}>
@@ -59,27 +24,7 @@ export default function ArticleCard({ article }) {
           />
         </StyledImageContainer>
         <ButtonContainer>
-          <FavoriteButton
-            isFavorite={isFavorite}
-            handleMarkFavorite={handleMarkFavorite}
-          />
-
-          <Link
-            href={shareURL}
-            passHref
-            target="_blank"
-            rel="noopener noreferrer">
-            <StyledLink>Zum Artikel</StyledLink>
-          </Link>
-
-          <Link
-            href={`/summary?shareURL=${encodeURIComponent(
-              shareURL
-            )}&teaserImage=${encodeURIComponent(
-              teaserImage?.imageVariants?.["16x9-256"] || ""
-            )}`}>
-            <StyledButton>Zusammenfassung</StyledButton>
-          </Link>
+          <ThreeDotMenu article={article}></ThreeDotMenu>
         </ButtonContainer>
       </ContentContainer>
     </StyledContainer>
