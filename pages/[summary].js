@@ -10,7 +10,7 @@ export default function SummaryPage() {
   const { shareURL, teaserImage } = router.query;
 
   const { data, error } = useSWR(
-    `https://api.smmry.com/&SM_API_KEY=${apiKey}&SM_URL=${shareURL}&SM_LENGTH=3`
+    `https://api.smmry.com/&SM_API_KEY=7770A49AF2&SM_URL=${shareURL}&SM_LENGTH=3`
   );
 
   if (error) {
