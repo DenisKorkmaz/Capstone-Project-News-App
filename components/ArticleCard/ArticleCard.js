@@ -18,6 +18,7 @@ export default function ArticleCard({ article }) {
         <StyledImageContainer>
           <Image
             src={teaserImage?.imageVariants?.["16x9-1920"]}
+            priority={true}
             alt={title}
             width={320}
             height={180} quality={100}
