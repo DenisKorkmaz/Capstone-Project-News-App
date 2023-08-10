@@ -17,10 +17,10 @@ export default function ArticleCard({ article }) {
       <ContentContainer>
         <StyledImageContainer>
           <Image
-            src={teaserImage?.imageVariants?.["16x9-256"]}
+            src={teaserImage?.imageVariants?.["16x9-1920"]}
             alt={title}
-            width={256}
-            height={144}
+            width={320}
+            height={180} quality={100}
           />
         </StyledImageContainer>
         <ButtonContainer>

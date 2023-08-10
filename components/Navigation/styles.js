@@ -14,3 +14,12 @@ export const StyledNav = styled.nav`
     margin: 30px; 
   }
 `;
+
+export const NavDiv = styled.nav`
+display: flex;
+width: 338px;
+padding: 16px 40px 8px 40px;
+align-items: center;
+gap: 85px;
+z-index: 3;
+`;

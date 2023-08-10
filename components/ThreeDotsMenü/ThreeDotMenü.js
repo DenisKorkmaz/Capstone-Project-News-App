@@ -58,7 +58,7 @@ function ThreeDotMenu({ article }) {
               href={`/summary?shareURL=${encodeURIComponent(
                 article.shareURL
               )}&teaserImage=${encodeURIComponent(
-                article.teaserImage?.imageVariants?.["16x9-256"] || ""
+                article.teaserImage?.imageVariants?.["16x9-1920"] || ""
               )}`}>
               <StyledLink>Zusammenfassung</StyledLink>
             </Link>

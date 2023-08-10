@@ -11,10 +11,10 @@ export const StyledLink = styled.a`
 
 export const StyledUL = styled.ul`
   position: relative;
-  top: -22px;
-  right: 258px;
+  top: -17px;
+  right: 178px;
   display: flex;
-  width: 200px;
+  width: 120px;
   height: 91px;
   padding: 16px 24px;
   flex-direction: column;
@@ -29,7 +29,6 @@ export const StyledUL = styled.ul`
 export const StyledLI = styled.li`
   position: relative;
   top: -3px;
-  left: 100px;
   margin: 4px;
   align-text: right;
   background: transparent;

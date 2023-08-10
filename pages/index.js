@@ -17,7 +17,7 @@ export default function Home() {
 
   const stories = data.news.filter(
     (item) =>
-      item.type === "story" && item.teaserImage?.imageVariants?.["16x9-256"]
+      item.type === "story" && item.teaserImage?.imageVariants?.["16x9-1920"]
   );
 
   return (
