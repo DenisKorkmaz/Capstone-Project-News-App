@@ -9,7 +9,7 @@ import {
   ContentContainer,
   StyledH2,
   Styledp,
-  StyledButton
+  StyledButton,
 } from "../components/styles/summaryPageStyle";
 
 const apiKey = process.env.NEXT_PUBLIC_SMMRY_API_KEY;
@@ -43,16 +43,43 @@ export default function SummaryPage() {
       </StyledImageContainer>
       <StyledButton onClick={() => router.back()}> ⬅️</StyledButton>
 
+      {/* The API has a limit of 100 requests. To ensure that no empty data is displayed , I implemented default text as a fallback. */}
+
       <TitleContainer>
-        {data && data.sm_api_title ? <StyledH2>{data.sm_api_title}</StyledH2> : <StyledH2>Lorem ipsum dolor sit amet consectetur. Quis donec nulla ultrices eros et augue lorem non.</StyledH2>}
+        {data && data.sm_api_title ? (
+          <StyledH2>{data.sm_api_title}</StyledH2>
+        ) : (
+          <StyledH2>
+            Lorem ipsum dolor sit amet consectetur. Quis donec nulla ultrices
+            eros et augue lorem non.
+          </StyledH2>
+        )}
       </TitleContainer>
 
       <TextContainer>
-        {data && data.sm_api_content ? <Styledp>{data.sm_api_content}</Styledp> : <Styledp>Lorem ipsum dolor sit amet consectetur. Nibh faucibus justo et massa. Praesent tempor sed non erat. Massa neque nunc morbi cursus interdum. Ornare maecenas in elit sollicitudin suspendisse adipiscing dolor. Imperdiet mauris consectetur tristique tincidunt nulla amet gravida mattis commodo. Aliquam et quis nunc sit. Massa nec vestibulum quis amet sociis velit nunc. Ornare maecenas in elit sollicitudin suspendisse adipiscing dolor. Lorem ipsum dolor sit amet consectetur. Nibh faucibus justo et massa. Praesent tempor sed non erat. Massa neque nunc morbi cursus interdum. Ornare maecenas in elit sollicitudin suspendisse adipiscing dolor. Imperdiet mauris consectetur tristique tincidunt nulla amet gravida mattis commodo. Aliquam et quis nunc sit. Massa nec vestibulum quis amet sociis velit nunc. Ornare maecenas in elit sollicitudin suspendisse adipiscing dolor.  </Styledp>}
+        {data && data.sm_api_content ? (
+          <Styledp>{data.sm_api_content}</Styledp>
+        ) : (
+          <Styledp>
+            Lorem ipsum dolor sit amet consectetur. Nibh faucibus justo et
+            massa. Praesent tempor sed non erat. Massa neque nunc morbi cursus
+            interdum. Ornare maecenas in elit sollicitudin suspendisse
+            adipiscing dolor. Imperdiet mauris consectetur tristique tincidunt
+            nulla amet gravida mattis commodo. Aliquam et quis nunc sit. Massa
+            nec vestibulum quis amet sociis velit nunc. Ornare maecenas in elit
+            sollicitudin suspendisse adipiscing dolor. Lorem ipsum dolor sit
+            amet consectetur. Nibh faucibus justo et massa. Praesent tempor sed
+            non erat. Massa neque nunc morbi cursus interdum. Ornare maecenas in
+            elit sollicitudin suspendisse adipiscing dolor. Imperdiet mauris
+            consectetur tristique tincidunt nulla amet gravida mattis commodo.
+            Aliquam et quis nunc sit. Massa nec vestibulum quis amet sociis
+            velit nunc. Ornare maecenas in elit sollicitudin suspendisse
+            adipiscing dolor.{" "}
+          </Styledp>
+        )}
       </TextContainer>
 
       <Navigation></Navigation>
     </ContentContainer>
-);
-
+  );
 }
