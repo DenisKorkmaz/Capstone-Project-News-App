@@ -10,7 +10,7 @@ import {
   StyledH2,
   Styledp,
   StyledButton
-} from "./styles/summaryPageStyle";
+} from "../components/styles/summaryPageStyle";
 
 const apiKey = process.env.NEXT_PUBLIC_SMMRY_API_KEY;
 
