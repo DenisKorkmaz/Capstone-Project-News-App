@@ -16,7 +16,7 @@ export default function ArticleCard({ article}) {
 
   const isFavorite = favorites.some(
     (favorite) => favorite.shareURL === article.shareURL
-  );
+    ) || false;
 
   function handleMarkFavorite() {
     let newFavorites = [...favorites];
