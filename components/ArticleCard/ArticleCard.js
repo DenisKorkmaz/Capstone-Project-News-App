@@ -1,22 +1,22 @@
-import useLocalStorageState from "use-local-storage-state";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import ThreeDotMenu from "../ThreeDotsMenü/ThreeDotMenü";
+import useLocalStorageState from "use-local-storage-state";
+import { useState, useEffect } from "react";
+
 import {
   StyledH2,
   StyledImageContainer,
   ButtonContainer,
-  StyledLink,
   StyledContainer,
   ContentContainer,
 } from "./styles";
 
-export default function ArticleCard({ article }) {
+export default function ArticleCard({ article}) {
   const { title, teaserImage, shareURL } = article;
 
   const [favorites, setFavorites] = useLocalStorageState("favorites", []);
   const [isFavorite, setIsFavorite] = useState(false);
+
 
   useEffect(() => {
     if (!favorites) return;
@@ -29,18 +29,17 @@ export default function ArticleCard({ article }) {
   function handleMarkFavorite() {
     const currentFavorites = favorites || [];
     let newFavorites = [...currentFavorites];
-    {
-      if (isFavorite) {
-        newFavorites = newFavorites.filter(
-          (favorite) => favorite.shareURL !== article.shareURL
-        );
-      } else {
-        newFavorites.push(article);
-      }
-      setFavorites(newFavorites);
-      setIsFavorite(!isFavorite);
+    if (isFavorite) {
+      newFavorites = newFavorites.filter(
+        (favorite) => favorite.shareURL !== article.shareURL
+      );
+    } else {
+      newFavorites.push(article);
     }
+    setFavorites(newFavorites);
+    setIsFavorite(!isFavorite);
   }
+
 
   return (
     <StyledContainer key={shareURL}>
@@ -48,25 +47,20 @@ export default function ArticleCard({ article }) {
       <ContentContainer>
         <StyledImageContainer>
           <Image
-            src={teaserImage?.imageVariants?.["16x9-256"]}
+            src={teaserImage?.imageVariants?.["16x9-1920"]}
+            priority={true}
             alt={title}
-            width={256}
-            height={144}
+            width={320}
+            height={180}
+            quality={100}
           />
         </StyledImageContainer>
         <ButtonContainer>
-          <FavoriteButton
+          <ThreeDotMenu
+            article={article}
             isFavorite={isFavorite}
-            handleMarkFavorite={handleMarkFavorite}
+            onMarkFavorite={handleMarkFavorite}
           />
-
-          <Link
-            href={shareURL}
-            passHref
-            target="_blank"
-            rel="noopener noreferrer">
-            <StyledLink>Zum Artikel</StyledLink>
-          </Link>
         </ButtonContainer>
       </ContentContainer>
     </StyledContainer>
