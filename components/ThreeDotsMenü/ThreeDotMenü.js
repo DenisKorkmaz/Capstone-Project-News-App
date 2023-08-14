@@ -1,37 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-import useLocalStorageState from "use-local-storage-state";
-import { StyledLink, StyledUL, StyledLI, StyledButton } from "./styles";
+import { StyledP, StyledUL, StyledLI, StyledButton } from "./styles";
 
-function ThreeDotMenu({ article }) {
+function ThreeDotMenu({ article, onMarkFavorite, isFavorite }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [favorites, setFavorites] = useLocalStorageState("favorites", []);
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  useEffect(() => {
-    if (!favorites) return;
-    const found = favorites.some(
-      (favorite) => favorite.shareURL === article.shareURL
-    );
-    setIsFavorite(found);
-  }, [favorites, article.shareURL]);
-
-  function handleMarkFavorite() {
-    const currentFavorites = favorites || [];
-    let newFavorites = [...currentFavorites];
-    {
-      if (isFavorite) {
-        newFavorites = newFavorites.filter(
-          (favorite) => favorite.shareURL !== article.shareURL
-        );
-      } else {
-        newFavorites.push(article);
-      }
-      setFavorites(newFavorites);
-      setIsFavorite(!isFavorite);
-    }
-  }
 
   return (
     <>
@@ -41,7 +14,7 @@ function ThreeDotMenu({ article }) {
           <StyledLI>
             <FavoriteButton
               isFavorite={isFavorite}
-              handleMarkFavorite={handleMarkFavorite}
+              handleMarkFavorite={() => onMarkFavorite(article)}
             />
           </StyledLI>
           <StyledLI>
@@ -50,7 +23,7 @@ function ThreeDotMenu({ article }) {
               passHref
               target="_blank"
               rel="noopener noreferrer">
-              <StyledLink>Zum Artikel</StyledLink>
+              <StyledP>Zum Artikel</StyledP>
             </Link>
           </StyledLI>
           <StyledLI>
@@ -60,7 +33,7 @@ function ThreeDotMenu({ article }) {
               )}&teaserImage=${encodeURIComponent(
                 article.teaserImage?.imageVariants?.["16x9-1920"] || ""
               )}`}>
-              <StyledLink>Zusammenfassung</StyledLink>
+              <StyledP>Zusammenfassung</StyledP>
             </Link>
           </StyledLI>
         </StyledUL>

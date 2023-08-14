@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledLink = styled.a`
+export const StyledP = styled.a`
   background: transparent;
   color: white;
   cursor: pointer;

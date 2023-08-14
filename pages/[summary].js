@@ -16,7 +16,8 @@ const apiKey = process.env.NEXT_PUBLIC_SMMRY_API_KEY;
 
 export default function SummaryPage() {
   const router = useRouter();
-  const { shareURL, teaserImage } = router.query;
+  const { shareURL, teaserImage} = router.query;
+
 
   const { data, error } = useSWR(
     `https://api.smmry.com/&SM_API_KEY=${apiKey}&SM_URL=${shareURL}&SM_LENGTH=3`

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ThreeDotMenu from "../ThreeDotsMenü/ThreeDotMenü";
+import useLocalStorageState from "use-local-storage-state";
 import {
   StyledH2,
   StyledImageContainer,
@@ -8,8 +9,28 @@ import {
   ContentContainer,
 } from "./styles";
 
-export default function ArticleCard({ article }) {
+export default function ArticleCard({ article}) {
   const { title, teaserImage, shareURL } = article;
+
+  const [favorites, setFavorites] = useLocalStorageState("favorites", []);
+
+  const isFavorite = favorites.some(
+    (favorite) => favorite.shareURL === article.shareURL
+  );
+
+  function handleMarkFavorite() {
+    let newFavorites = [...favorites];
+
+    if (isFavorite) {
+      newFavorites = newFavorites.filter(
+        (favorite) => favorite.shareURL !== article.shareURL
+      );
+    } else {
+      newFavorites.push(article);
+    }
+
+    setFavorites(newFavorites);
+  }
 
   return (
     <StyledContainer key={shareURL}>
@@ -21,11 +42,16 @@ export default function ArticleCard({ article }) {
             priority={true}
             alt={title}
             width={320}
-            height={180} quality={100}
+            height={180}
+            quality={100}
           />
         </StyledImageContainer>
         <ButtonContainer>
-          <ThreeDotMenu article={article}></ThreeDotMenu>
+          <ThreeDotMenu
+            article={article}
+            isFavorite={isFavorite}
+            onMarkFavorite={handleMarkFavorite}
+          />
         </ButtonContainer>
       </ContentContainer>
     </StyledContainer>
