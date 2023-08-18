@@ -1,29 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { SearchIcon } from "../Icons/Icons";
+import { SearchBarContainer, SearchInput, IconWrapper } from './styles';
+
 
 function SearchBar({ onSearch }) {
-    const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
-    const handleInputChange = (event) => {
-        setSearchTerm(event.target.value);
-    };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        onSearch(searchTerm);
-        setSearchTerm(''); 
-    };
-
-    return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="Suche..."
-                value={searchTerm}
-                onChange={handleInputChange}
-            />
-            <button type="submit">Suchen</button>
-        </form>
-    );
-}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSearch(searchTerm);
+    setSearchTerm("");
+  };
+  return (
+    <SearchBarContainer onSubmit={handleSubmit}>
+      <SearchInput
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Suchen..."
+      />
+      <IconWrapper onClick={handleSubmit}>
+        <SearchIcon />
+      </IconWrapper>
+    </SearchBarContainer>
+  );
+};
 
 export default SearchBar;

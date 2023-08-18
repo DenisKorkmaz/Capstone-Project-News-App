@@ -8,18 +8,25 @@ export default function Home() {
   const { data, error } = useSWR("https://www.tagesschau.de/api2/news");
   const [filteredArticles, setFilteredArticles] = useState([]);
 
+  const filterForImageFormat = (articles) => {
+    return articles.filter(
+      (item) => item.type === "story" && item.teaserImage?.imageVariants?.["16x9-1920"]
+    );
+  };
+
+
   useEffect(() => {
     if (data && data.news) {
-      setFilteredArticles(data.news);
+      setFilteredArticles(filterForImageFormat(data.news));
     }
-  }, [data]);
+  }, []);
 
   const handleSearch = (searchTerm) => {
     if (data && data.news) {
       const results = data.news.filter((article) =>
         article.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
-      setFilteredArticles(results);
+      setFilteredArticles(filterForImageFormat(results));
     }
   };
 
@@ -30,10 +37,7 @@ export default function Home() {
     return <div>loading...</div>;
   }
 
-  const stories = data.news.filter(
-    (item) =>
-      item.type === "story" && item.teaserImage?.imageVariants?.["16x9-1920"]
-  );
+  
 
   return (
     <>
