@@ -23,7 +23,7 @@ export default function FavoritePage() {
     <>
       <Navigation />
       <SearchBar onSearch={handleSearch} />
-      
+
       {Array.isArray(filteredFavorites) && filteredFavorites.length > 0 ? (
         <ul>
           {filteredFavorites.map((article) => (

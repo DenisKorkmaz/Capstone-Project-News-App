@@ -10,16 +10,16 @@ export default function Home() {
 
   const filterForImageFormat = (articles) => {
     return articles.filter(
-      (item) => item.type === "story" && item.teaserImage?.imageVariants?.["16x9-1920"]
+      (item) =>
+        item.type === "story" && item.teaserImage?.imageVariants?.["16x9-1920"]
     );
   };
-
 
   useEffect(() => {
     if (data && data.news) {
       setFilteredArticles(filterForImageFormat(data.news));
     }
-  }, []);
+  }, [data]);
 
   const handleSearch = (searchTerm) => {
     if (data && data.news) {
@@ -36,8 +36,6 @@ export default function Home() {
   if (!data) {
     return <div>loading...</div>;
   }
-
-  
 
   return (
     <>
