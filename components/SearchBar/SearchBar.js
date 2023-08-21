@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { SearchIcon } from "../Icons/Icons";
 import { SearchBarContainer, SearchInput, IconWrapper } from './styles';
 
@@ -20,7 +20,7 @@ function SearchBar({ onSearch }) {
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Suchen..."
       />
-      <IconWrapper onClick={handleSubmit}>
+      <IconWrapper type="submit">
         <SearchIcon />
       </IconWrapper>
     </SearchBarContainer>
