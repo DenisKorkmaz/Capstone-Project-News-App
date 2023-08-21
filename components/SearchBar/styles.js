@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const SearchBarContainer = styled.form`
   display: flex;
   width: 296px;
-  height: 17px;
-  padding: 8px 16px;
+  padding: 4px 16px;
   align-items: center;
   flex-shrink: 0;
   border-radius: 16px;
-  border: 1px solid #A6A6A6;
-  background: #FFF;
+  border: 1px solid #a6a6a6;
+  background: #fff;
   position: relative;
   left: 45px;
+  justify-content: space-between;
 `;
 
 export const SearchInput = styled.input`
@@ -19,15 +19,11 @@ export const SearchInput = styled.input`
   border: none;
   background: transparent;
   outline: none;
+  margin-right: 8px;
 `;
 
 export const IconWrapper = styled.button`
   background: none;
   border: none;
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
   cursor: pointer;
 `;
-
