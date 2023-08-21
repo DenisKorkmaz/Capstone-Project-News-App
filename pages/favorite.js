@@ -5,7 +5,9 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import { useState, useEffect } from "react";
 
 export default function FavoritePage() {
-  const [favorites, setFavorites] = useLocalStorageState("favorites", []);
+  const [favorites, setFavorites] = useLocalStorageState("favorites", {
+    defaultValue: [],
+  });
   const [filteredFavorites, setFilteredFavorites] = useState(favorites);
 
   useEffect(() => {
@@ -24,14 +26,16 @@ export default function FavoritePage() {
       <Navigation />
       <SearchBar onSearch={handleSearch} />
 
-      {Array.isArray(filteredFavorites) && filteredFavorites.length > 0 ? (
-        <ul>
-          {filteredFavorites.map((article) => (
-            <li key={article.shareURL}>
-              <ArticleCard article={article} />
-            </li>
-          ))}
-        </ul>
+      {filteredFavorites.length > 0 ? (
+        <>
+          <ul>
+            {filteredFavorites.map((article) => (
+              <li key={article.shareURL}>
+                <ArticleCard article={article} />
+              </li>
+            ))}
+          </ul>
+        </>
       ) : (
         <p>Keine Favoriten mit dem Suchbegriff gefunden.</p>
       )}
