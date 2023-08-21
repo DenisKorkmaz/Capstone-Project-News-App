@@ -28,9 +28,9 @@ export const ColoredMarkIcon = () => (
 
 export const ColoredMarkIconNav = () => (
   <svg
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
     fill="0080FF"
     xmlns="http://www.w3.org/2000/svg">
     <path
@@ -42,9 +42,9 @@ export const ColoredMarkIconNav = () => (
 
 export const HomeIconColored = () => (
   <svg
-  width="32"
-  height="20"
-  viewBox="0 0 22 20"
+    width="32"
+    height="20"
+    viewBox="0 0 22 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg">
     <g id="Component/Icon">
@@ -95,5 +95,22 @@ export const HomeIcon = () => (
       fill="#A6A6A6"
       fillOpacity="0.9"
     />
+  </svg>
+);
+
+export const SearchIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 12 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <g id="&#240;&#159;&#166;&#134; icon &#34;search&#34;">
+      <path
+        id="Vector"
+        d="M9.33294 8.86154L11.9024 11.431C12.0325 11.5611 12.0325 11.7722 11.9024 11.9024C11.7722 12.0325 11.5611 12.0325 11.431 11.9024L8.86154 9.33294C7.92131 10.163 6.68614 10.6667 5.33333 10.6667C2.38781 10.6667 0 8.27885 0 5.33333C0 2.38781 2.38781 0 5.33333 0C8.27885 0 10.6667 2.38781 10.6667 5.33333C10.6667 6.68614 10.163 7.92131 9.33294 8.86154ZM5.33333 10C7.91066 10 10 7.91066 10 5.33333C10 2.756 7.91066 0.666667 5.33333 0.666667C2.756 0.666667 0.666667 2.756 0.666667 5.33333C0.666667 7.91066 2.756 10 5.33333 10Z"
+        fill="black"
+      />
+    </g>
   </svg>
 );
