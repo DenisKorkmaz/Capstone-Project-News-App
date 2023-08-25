@@ -1,21 +1,25 @@
+import { FilterBarContainer, StyledSelect } from "./styles";
 
-export default function FilterBar({ onRegionChange, onRessortChange, selectedRegion, selectedRessort }) {
-  
-    const handleRegionChange = (e) => {
-        onRegionChange(e);
-        onRessortChange({ target: { value: "" } }); 
-      };
-    
-      const handleRessortChange = (e) => {
-        onRessortChange(e);
-        onRegionChange({ target: { value: "" } });
-      };
-  
-    return (
-    <div>
+export default function FilterBar({
+  onRegionChange,
+  onRessortChange,
+  selectedRegion,
+  selectedRessort,
+}) {
+  const handleRegionChange = (e) => {
+    onRegionChange(e);
+    onRessortChange({ target: { value: "" } });
+  };
+
+  const handleRessortChange = (e) => {
+    onRessortChange(e);
+    onRegionChange({ target: { value: "" } });
+  };
+
+  return (
+    <FilterBarContainer>
       <label>
-        Region:
-        <select value={selectedRegion} onChange={handleRegionChange}>
+        <StyledSelect value={selectedRegion} onChange={handleRegionChange}>
           <option value="">Alle Regionen</option>
           <option value="1">Baden-Württemberg</option>
           <option value="2">Bayern</option>
@@ -33,20 +37,19 @@ export default function FilterBar({ onRegionChange, onRessortChange, selectedReg
           <option value="14">Sachsen-Anhalt</option>
           <option value="15">Schleswig-Holstein</option>
           <option value="16">Thüringen</option>
-        </select>
+        </StyledSelect>
       </label>
       <label>
-      Katagorie:
-        <select value={selectedRessort} onChange={handleRessortChange}>
-          <option value="">Alle Ressorts</option>
+        <StyledSelect value={selectedRessort} onChange={handleRessortChange}>
+          <option value="">Alle Katagorien</option>
           <option value="inland">Inland</option>
           <option value="ausland">Ausland</option>
           <option value="wirtschaft">Wirtschaft</option>
           <option value="sport">Sport</option>
           <option value="investigativ">Investigativ</option>
           <option value="faktenfinder">Faktenfinder</option>
-        </select>
+        </StyledSelect>
       </label>
-    </div>
+    </FilterBarContainer>
   );
 }
