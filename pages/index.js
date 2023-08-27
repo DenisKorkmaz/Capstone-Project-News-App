@@ -10,11 +10,19 @@ export default function Home() {
   const [ressort, setRessort] = useState("");
   const [filteredArticles, setFilteredArticles] = useState([]);
 
-  const { data, error } = useSWR(
-    `https://www.tagesschau.de/api2/news?${region ? `regions=${region}` : ""}&${
-      ressort ? `ressort=${ressort}` : ""
-    }`
-  );
+  const baseUrl = "https://www.tagesschau.de/api2/news";
+  const params = [];
+  
+  if (region) {
+    params.push(`regions=${region}`);
+  }
+  
+  if (ressort) {
+    params.push(`ressort=${ressort}`);
+  }
+
+  const finalUrl = `${baseUrl}${params.length ? `?${params.join('&')}` : ''}`;
+  const { data, error } = useSWR(finalUrl);
 
   const filterForImageFormat = (articles) => {
     return articles.filter(
