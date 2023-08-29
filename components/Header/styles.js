@@ -9,6 +9,6 @@ export const StyledHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 0;
+  padding: 16px 0px 5px 0px;
   z-index: 9999;
   `;

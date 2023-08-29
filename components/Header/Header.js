@@ -8,16 +8,19 @@ export default function Header({
   onRessortChange,
   selectedRegion,
   selectedRessort,
+  hideFilter = false
 }) {
   return (
     <StyledHeader>
       <SearchBar onSearch={onSearch} />
+      {!hideFilter && (
       <FilterBar
         onRegionChange={onRegionChange}
         onRessortChange={onRessortChange}
         selectedRegion={selectedRegion}
         selectedRessort={selectedRessort}
       />
+      )}
     </StyledHeader>
   );
 }
