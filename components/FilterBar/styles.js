@@ -5,10 +5,9 @@ export const FilterBarContainer = styled.div`
   gap: 8px;
   display: flex;
   width: 296px;
-  padding: 4px 16px;
+  padding: 0px 16px;
   border-radius: 16px;
   position: relative;
-  left: 45px;
   margin-top: 10px;
 
 `;

@@ -3,15 +3,14 @@ import styled from "styled-components";
 export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin: 10px;
+  align-items: center;
+  padding-top: 50px;
 `;
 
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  margin-bottom: 15px;
 
 `;
 
@@ -28,7 +27,6 @@ export const StyledImageContainer = styled.div`
   align-items: flex-start;
   border-radius: 30px;
   overflow: hidden;
-  margin-bottom: 15px;
   width: 256;
   height: 144;
 `;

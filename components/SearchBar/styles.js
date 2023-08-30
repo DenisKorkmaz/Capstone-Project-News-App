@@ -10,8 +10,10 @@ export const SearchBarContainer = styled.form`
   border: 1px solid #a6a6a6;
   background: #fff;
   position: relative;
-  left: 45px;
   justify-content: space-between;
+  margin-left: 100px;
+  margin-right: 100px;
+
 `;
 
 export const SearchInput = styled.input`

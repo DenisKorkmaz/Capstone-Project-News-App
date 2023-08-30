@@ -1,7 +1,7 @@
 import useLocalStorageState from "use-local-storage-state";
 import Navigation from "@/components/Navigation/Navigation";
 import ArticleCard from "@/components/ArticleCard/ArticleCard";
-import SearchBar from "@/components/SearchBar/SearchBar";
+import Header from "@/components/Header/Header";
 import { useState, useEffect } from "react";
 
 export default function FavoritePage() {
@@ -24,8 +24,10 @@ export default function FavoritePage() {
   return (
     <>
       <Navigation />
-      <SearchBar onSearch={handleSearch} />
-
+      <Header
+        onSearch={handleSearch}
+        hideFilter={true} 
+      />
       {filteredFavorites.length > 0 ? (
         <>
           <ul>

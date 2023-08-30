@@ -1,9 +1,8 @@
 import ArticleList from "@/components/ArticleList/ArticleList";
 import Navigation from "@/components/Navigation/Navigation";
 import useSWR from "swr";
-import SearchBar from "@/components/SearchBar/SearchBar";
 import { useState, useEffect } from "react";
-import FilterBar from "@/components/FilterBar/FilterBar";
+import Header from "@/components/Header/Header";
 
 export default function Home() {
   const [region, setRegion] = useState("");
@@ -12,16 +11,16 @@ export default function Home() {
 
   const baseUrl = "https://www.tagesschau.de/api2/news";
   const params = [];
-  
+
   if (region) {
     params.push(`regions=${region}`);
   }
-  
+
   if (ressort) {
     params.push(`ressort=${ressort}`);
   }
 
-  const finalUrl = `${baseUrl}${params.length ? `?${params.join('&')}` : ''}`;
+  const finalUrl = `${baseUrl}${params.length ? `?${params.join("&")}` : ""}`;
   const { data, error } = useSWR(finalUrl);
 
   const filterForImageFormat = (articles) => {
@@ -56,8 +55,8 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <SearchBar onSearch={handleSearch} />
-      <FilterBar
+      <Header
+        onSearch={handleSearch}
         onRegionChange={(e) => setRegion(e.target.value)}
         onRessortChange={(e) => setRessort(e.target.value)}
         selectedRegion={region}
@@ -71,4 +70,4 @@ export default function Home() {
     </>
   );
 }
-//fdsgsdfa
+//test
