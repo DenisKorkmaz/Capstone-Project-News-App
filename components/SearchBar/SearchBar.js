@@ -13,14 +13,14 @@ function SearchBar({ onSearch }) {
     setSearchTerm("");
   };
   return (
-    <SearchBarContainer onSubmit={handleSubmit}>
+    <SearchBarContainer role="form" onSubmit={handleSubmit}>
       <SearchInput
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Suchen..."
       />
-      <IconWrapper type="submit">
+      <IconWrapper type="submit" aria-label="search">
         <SearchIcon />
       </IconWrapper>
     </SearchBarContainer>
