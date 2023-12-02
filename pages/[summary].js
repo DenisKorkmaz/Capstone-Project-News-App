@@ -35,11 +35,11 @@ export default function SummaryPage() {
       <StyledImageContainer>
         <Image
           src={teaserImage}
-          priority={true}
           alt="Teaser Image"
           width={400}
           height={224}
           quality={100}
+          loading="lazy"
         />
       </StyledImageContainer>
       <StyledButton onClick={() => router.back()}> ⬅️</StyledButton>

@@ -8,6 +8,8 @@ export default function Home() {
   const [region, setRegion] = useState("");
   const [ressort, setRessort] = useState("");
   const [filteredArticles, setFilteredArticles] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [articlesPerPage] = useState(5); 
 
   const baseUrl = "https://www.tagesschau.de/api2/news";
   const params = [];
@@ -32,9 +34,14 @@ export default function Home() {
 
   useEffect(() => {
     if (data && data.news) {
-      setFilteredArticles(filterForImageFormat(data.news));
+      const startIndex = (currentPage - 1) * articlesPerPage;
+      const selectedArticles = filterForImageFormat(data.news).slice(
+        startIndex,
+        startIndex + articlesPerPage
+      );
+      setFilteredArticles(selectedArticles);
     }
-  }, [data]);
+  }, [data, currentPage, articlesPerPage]);
 
   const handleSearch = (searchTerm) => {
     if (data && data.news) {
@@ -43,6 +50,10 @@ export default function Home() {
       );
       setFilteredArticles(filterForImageFormat(results));
     }
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
   };
 
   if (error) {
@@ -55,6 +66,14 @@ export default function Home() {
   return (
     <>
       <Navigation />
+      <div>
+        <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+          😴Vorherige Seite
+        </button>
+        <button onClick={() => handlePageChange(currentPage + 1)}>
+          🟰Nächste Seite
+        </button>
+      </div>
       <Header
         onSearch={handleSearch}
         onRegionChange={(e) => setRegion(e.target.value)}
@@ -70,4 +89,3 @@ export default function Home() {
     </>
   );
 }
-//test
