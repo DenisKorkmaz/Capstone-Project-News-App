@@ -8,8 +8,6 @@ export default function Home() {
   const [region, setRegion] = useState("");
   const [ressort, setRessort] = useState("");
   const [filteredArticles, setFilteredArticles] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [articlesPerPage] = useState(5); 
 
   const baseUrl = "https://www.tagesschau.de/api2/news";
   const params = [];
@@ -34,14 +32,10 @@ export default function Home() {
 
   useEffect(() => {
     if (data && data.news) {
-      const startIndex = (currentPage - 1) * articlesPerPage;
-      const selectedArticles = filterForImageFormat(data.news).slice(
-        startIndex,
-        startIndex + articlesPerPage
-      );
+      const selectedArticles = filterForImageFormat(data.news);
       setFilteredArticles(selectedArticles);
     }
-  }, [data, currentPage, articlesPerPage]);
+  }, [data]);
 
   const handleSearch = (searchTerm) => {
     if (data && data.news) {
@@ -52,8 +46,11 @@ export default function Home() {
     }
   };
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   if (error) {
@@ -78,12 +75,18 @@ export default function Home() {
       ) : (
         <p>Keine Artikel mit dem Suchbegriff gefunden.</p>
       )}
-            <div className="buttonContainer">
-        <button className="paginationButton" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-        ◀️
-        </button>
-        <button className="paginationButton" onClick={() => handlePageChange(currentPage + 1)}>
-          ▶️
+      <div className="buttonContainer">
+        <button className="topButton" onClick={scrollToTop}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-caret-up-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+          </svg>
         </button>
       </div>
     </>

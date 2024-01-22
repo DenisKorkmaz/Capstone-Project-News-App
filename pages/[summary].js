@@ -16,8 +16,7 @@ const apiKey = process.env.NEXT_PUBLIC_SMMRY_API_KEY;
 
 export default function SummaryPage() {
   const router = useRouter();
-  const { shareURL, teaserImage} = router.query;
-
+  const { shareURL, teaserImage } = router.query;
 
   const { data, error } = useSWR(
     `https://api.smmry.com/&SM_API_KEY=${apiKey}&SM_URL=${shareURL}&SM_LENGTH=4`
@@ -42,7 +41,28 @@ export default function SummaryPage() {
           loading="lazy"
         />
       </StyledImageContainer>
-      <StyledButton onClick={() => router.back()}> ⬅️</StyledButton>
+      <StyledButton onClick={() => router.back()}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-caret-left-fill"
+          viewBox="0 0 16 16"
+        >
+          <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="#0056b3"
+          class="bi bi-caret-left-fill"
+          viewBox="0 0 16 16"
+        >
+          <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+        </svg>
+      </StyledButton>
 
       {/* The API has a limit of 100 requests. To ensure that no empty data is displayed , I implemented default text as a fallback. */}
 
