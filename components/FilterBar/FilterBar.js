@@ -45,8 +45,8 @@ export default function FilterBar({
           <option value="inland">Inland</option>
           <option value="ausland">Ausland</option>
           <option value="wirtschaft">Wirtschaft</option>
-          <option value="sport">Sport</option>
-          <option value="investigativ">Investigativ</option>
+{/*           <option value="sport">Sport</option>
+ */}          <option value="investigativ">Investigativ</option>
           <option value="faktenfinder">Faktenfinder</option>
         </StyledSelect>
       </label>

@@ -10,8 +10,11 @@ export const StyledNav = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
   a:first-child {
     margin: 30px; 
+    z-index: 100;
+
   }
 `;
 
@@ -21,5 +24,5 @@ width: 338px;
 padding: 16px 40px 8px 40px;
 align-items: center;
 gap: 85px;
-z-index: 3;
+z-index: 100;
 `;
