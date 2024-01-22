@@ -66,14 +66,6 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <div>
-        <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-          😴Vorherige Seite
-        </button>
-        <button onClick={() => handlePageChange(currentPage + 1)}>
-          🟰Nächste Seite
-        </button>
-      </div>
       <Header
         onSearch={handleSearch}
         onRegionChange={(e) => setRegion(e.target.value)}
@@ -86,6 +78,14 @@ export default function Home() {
       ) : (
         <p>Keine Artikel mit dem Suchbegriff gefunden.</p>
       )}
+            <div className="buttonContainer">
+        <button className="paginationButton" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+        ◀️
+        </button>
+        <button className="paginationButton" onClick={() => handlePageChange(currentPage + 1)}>
+          ▶️
+        </button>
+      </div>
     </>
   );
 }

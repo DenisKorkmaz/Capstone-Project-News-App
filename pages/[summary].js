@@ -20,7 +20,7 @@ export default function SummaryPage() {
 
 
   const { data, error } = useSWR(
-    `https://api.smmry.com/&SM_API_KEY=${apiKey}&SM_URL=${shareURL}&SM_LENGTH=5`
+    `https://api.smmry.com/&SM_API_KEY=${apiKey}&SM_URL=${shareURL}&SM_LENGTH=4`
   );
 
   if (error) {
