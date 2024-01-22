@@ -43,4 +43,5 @@ export const StyledButton = styled.button`
   border: none;
   background: transparent;
   cursor: pointer;
+  z-index: 100;
 `;
