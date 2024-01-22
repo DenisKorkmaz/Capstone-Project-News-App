@@ -7,6 +7,8 @@ export const StyledP = styled.a`
   text-decoration: none;
   font-size: 13px;
   border: none;
+  z-index: 100;
+
 `;
 
 export const StyledUL = styled.ul`
@@ -24,6 +26,8 @@ export const StyledUL = styled.ul`
   background-blend-mode: luminosity;
   background: rgba(245, 245, 245, 0.1);
   backdrop-filter: blur(10px);
+  z-index: 100;
+
 `;
 
 export const StyledLI = styled.li`
@@ -37,6 +41,7 @@ export const StyledLI = styled.li`
   text-decoration: none;
   font-size: 13px;
   border: none;
+  z-index: 100;
 `;
 
 export const StyledButton = styled.button`
