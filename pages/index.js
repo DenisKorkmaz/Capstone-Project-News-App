@@ -9,7 +9,7 @@ export default function Home() {
   const [ressort, setRessort] = useState("");
   const [filteredArticles, setFilteredArticles] = useState([]);
 
-  const baseUrl = "https://www.tagesschau.de/api2/news";
+  const baseUrl = "https://www.tagesschau.de/api2u/news";
   const params = [];
 
   if (region) {
